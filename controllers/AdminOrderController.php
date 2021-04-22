@@ -13,6 +13,9 @@ use models\Product;
  */
 class AdminOrderController extends AdminBase
 {
+    /**
+     * @return bool
+     */
     public function actionIndex() {
         self::checkAdmin();
 

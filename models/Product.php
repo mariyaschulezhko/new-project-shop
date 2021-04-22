@@ -6,6 +6,10 @@ namespace models;
 
 use components\Db;
 
+/**
+ * Class Product
+ * @package models
+ */
 class Product
 {
     const SHOW_BY_DEFAULT = 2;

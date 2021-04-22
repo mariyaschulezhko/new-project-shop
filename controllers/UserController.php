@@ -6,8 +6,15 @@ namespace controllers;
 
 use models\User;
 
+/**
+ * Class UserController
+ * @package controllers
+ */
 class UserController
 {
+    /**
+     * @return bool
+     */
     public function actionRegister()
     {
         $name = '';
@@ -44,6 +51,9 @@ class UserController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionLogin()
     {
         $email = '';
@@ -72,6 +82,7 @@ class UserController
            require_once __DIR__ . '/../views/user/login.php';
         return true;
     }
+
 
     public function actionLogout()
     {

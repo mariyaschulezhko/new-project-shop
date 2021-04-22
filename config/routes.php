@@ -12,7 +12,7 @@ return [
     'cart/delete/([0-9]+)' => 'cart/delete/$1',
     'cart' => 'cart/index',
     'contacts' => 'site/contact',
-    //'user/edit' => 'user/edit',
+
     'user/register' => 'user/register',
     'user/login' => 'user/login',
     'user/logout' => 'user/logout',

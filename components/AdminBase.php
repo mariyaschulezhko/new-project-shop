@@ -6,8 +6,15 @@ namespace components;
 
 use models\User;
 
+/**
+ * Class AdminBase
+ * @package components
+ */
 abstract class AdminBase
 {
+    /**
+     * @return bool
+     */
     public static function checkAdmin() {
         $userId = User::checkLogged();
 

@@ -8,8 +8,16 @@ use models\Category;
 use models\Product;
 use models\User;
 
+
+/**
+ * Class SiteController
+ * @package controllers
+ */
 class SiteController
 {
+    /**
+     * @return bool
+     */
     public function actionIndex()
     {
         $categories = [];
@@ -25,21 +33,13 @@ class SiteController
         return true;
     }
 
-    public function actionViews()
-    {
 
-        return true;
-    }
-
-
+    /**
+     * @return bool
+     */
     public function actionContact()
     {
-//        $mail = "mariyaschulezhko@gmail.com";
-//        $subject = 'About';
-//        $message = 'Content leter';
-//        $result = mail($mail, $subject, $message);
-//        var_dump($result);
-//        die;
+
 
         $userEmail = '';
         $userText = '';
@@ -66,6 +66,9 @@ class SiteController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionAbout() {
         require_once __DIR__ . '/../views/site/about.php';
         return true;

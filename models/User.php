@@ -6,8 +6,18 @@ namespace models;
 
 use components\Db;
 
+/**
+ * Class User
+ * @package models
+ */
 class User
 {
+    /**
+     * @param $name
+     * @param $email
+     * @param $password
+     * @return bool
+     */
     public static function register($name, $email, $password) {
         $db = Db::getConnection();
         $sql = "INSERT INTO user (name, email, password) VALUE (:name, :email, :password)";
@@ -19,6 +29,10 @@ class User
         return $result->execute();
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public static function checkName($name) {
         if (strlen($name) > 2) {
             return true;
@@ -26,11 +40,16 @@ class User
         return false;
     }
 
+    /**
+     * @param $password
+     * @return bool
+     */
     public static function checkPassword($password) {
         if (strlen($password) >= 6){
             return true;
         }
     }
+
 
     public static function checkEmail($email) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -39,6 +58,10 @@ class User
         return false;
     }
 
+    /**
+     * @param $email
+     * @return bool
+     */
     public static function checkEmailExists($email) {
         $db = Db::getConnection();
 
@@ -53,6 +76,11 @@ class User
 
     }
 
+    /**
+     * @param $email
+     * @param $password
+     * @return false|mixed
+     */
     public static function checkUserDate($email, $password) {
         $db = Db::getConnection();
         $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
@@ -67,6 +95,9 @@ class User
         return false;
     }
 
+    /**
+     * @param $userId
+     */
     public static function auth($userId) {
 
         $_SESSION['user'] = $userId;
@@ -81,6 +112,10 @@ class User
         header("Location: /user/login");
     }
 
+
+    /**
+     * @return bool
+     */
     public static function isGuest() {
 
         if (isset($_SESSION['user'])) {
@@ -89,6 +124,10 @@ class User
         return true;
     }
 
+    /**
+     * @param $userId
+     * @return mixed
+     */
     public static function getUserById($userId) {
         if ($userId) {
             $db = Db::getConnection();
@@ -103,6 +142,13 @@ class User
 
         }
     }
+
+    /**
+     * @param $userId
+     * @param $name
+     * @param $password
+     * @return bool
+     */
     public static function edit($userId, $name, $password) {
         $db = Db::getConnection();
         $sql = 'UPDATE user SET name = :name,  password = :password WHERE id = :userId';
@@ -114,6 +160,10 @@ class User
 
     }
 
+    /**
+     * @param $phone
+     * @return bool
+     */
     public static function checkPhone($phone)
     {
         if (strlen($phone) >= 10) {

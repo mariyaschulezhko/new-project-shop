@@ -5,8 +5,15 @@ namespace controllers;
 use components\AdminBase;
 use models\Category;
 
+/**
+ * Class AdminCategoryController
+ * @package controllers
+ */
 class AdminCategoryController extends AdminBase
 {
+    /**
+     * @return bool
+     */
 public function actionIndex() {
     self::checkAdmin();
     $categoriesList = Category::getCategoriesListAdmin();
@@ -15,6 +22,9 @@ public function actionIndex() {
     return true;
 }
 
+    /**
+     * @return bool
+     */
 public function actionCreate() {
     self::checkAdmin();
 
@@ -39,6 +49,10 @@ public function actionCreate() {
     return true;
 }
 
+    /**
+     * @param $id
+     * @return bool
+     */
 public function actionUpdate($id) {
     self::checkAdmin();
 
@@ -59,11 +73,15 @@ public function actionUpdate($id) {
         header("Location: /admin/category");
     }
 
-    // Подключаем вид
+
     require_once __DIR__ . '/../views/admin_category/update.php';
     return true;
 }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function actionDelete($id)
     {
         self::checkAdmin();
@@ -73,11 +91,10 @@ public function actionUpdate($id) {
 
             Category::deleteCategoryById($id);
 
-            // Перенаправляем пользователя на страницу управлениями товарами
             header("Location: /admin/category");
         }
 
-        // Подключаем вид
+
         require_once __DIR__ . '/../views/admin_category/delete.php';
         return true;
     }

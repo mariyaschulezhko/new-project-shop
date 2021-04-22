@@ -3,9 +3,16 @@
 
 namespace components;
 
-
+/**
+ * Class Cart
+ * @package components
+ */
 class Cart
 {
+    /**
+     * @param $id
+     * @return int|mixed
+     */
     public static function addProduct($id) {
         $id = intval($id);
 
@@ -24,6 +31,9 @@ class Cart
         return self::countItems();
     }
 
+    /**
+     * @return int|mixed
+     */
     public static function countItems() {
         if (isset($_SESSION['products'])) {
             $count = 0;
@@ -37,6 +47,9 @@ class Cart
         }
     }
 
+    /**
+     * @return false|mixed
+     */
     public static function getProducts() {
         if (isset($_SESSION['products'])) {
             return $_SESSION['products'];
@@ -44,6 +57,10 @@ class Cart
         return false;
     }
 
+    /**
+     * @param $products
+     * @return float|int
+     */
     public static function getTotalPrice($products) {
         $productsInCart = self::getProducts();
 
@@ -57,21 +74,24 @@ class Cart
         return $total;
     }
 
+
+
     public static function clear() {
         if (isset($_SESSION['products'])) {
             unset($_SESSION['products']);
         }
     }
 
+    /**
+     * @param $id
+     */
     public static function deleteProduct($id)
     {
-        // Получаем массив с идентификаторами и количеством товаров в корзине
+
         $productsInCart = self::getProducts();
 
-        // Удаляем из массива элемент с указанным id
         unset($productsInCart[$id]);
 
-        // Записываем массив товаров с удаленным элементом в сессию
         $_SESSION['products'] = $productsInCart;
     }
 

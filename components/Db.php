@@ -3,10 +3,16 @@
 
 namespace components;
 
-
+/**
+ * Class Db
+ * @package components
+ */
 class Db
 {
 
+    /**
+     * @return \PDO
+     */
     public static function getConnection()
     {
         $db_param = require __DIR__ . '/../config/db_params.php';

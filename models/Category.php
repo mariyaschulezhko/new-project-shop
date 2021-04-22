@@ -6,8 +6,15 @@ namespace models;
 
 use components\Db;
 
+/**
+ * Class Category
+ * @package models
+ */
 class Category
 {
+    /**
+     * @return array
+     */
     public static function getCategoriesList()
     {
         $db = Db::getConnection();
@@ -24,6 +31,9 @@ class Category
         return $categoryList;
     }
 
+    /**
+     * @return array
+     */
     public static function getCategoriesListAdmin() {
         $db = Db::getConnection();
         $result = $db->query('SELECT id, name, sort_order, status FROM category ORDER BY sort_order ASC');
@@ -41,6 +51,12 @@ class Category
         return $categoryList;
     }
 
+    /**
+     * @param $name
+     * @param $sortOrder
+     * @param $status
+     * @return bool
+     */
     public static function createCategory($name, $sortOrder, $status) {
         $db = Db::getConnection();
         $sql = "INSERT  INTO category (name, sort_order, status) VALUES (:name, :sort_order, :status)";
@@ -52,6 +68,10 @@ class Category
         return $result->execute();
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function deleteCategoryById($id) {
         $db = Db::getConnection();
         $sql = "DELETE FROM category WHERE id = :id";
@@ -62,6 +82,10 @@ class Category
 
     }
 
+    /**
+     * @param $status
+     * @return string
+     */
     public static function getStatusText($status)
     {
         switch ($status) {
@@ -74,6 +98,13 @@ class Category
         }
     }
 
+    /**
+     * @param $id
+     * @param $name
+     * @param $sortOrder
+     * @param $status
+     * @return bool
+     */
     public static function updateCategoryById($id, $name, $sortOrder, $status) {
         $db = Db::getConnection();
         $sql = "UPDATE category SET  name = :name, sort_order = :sort_order, status = :status WHERE id = :id";
@@ -87,6 +118,10 @@ class Category
         return $result->execute();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function getCategoryById($id) {
         $db = Db::getConnection();
         $sql = "SELECT * FROM category WHERE id = :id";

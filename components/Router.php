@@ -3,17 +3,26 @@
 
 namespace components;
 
-
+/**
+ * Class Router
+ * @package components
+ */
 class Router
 {
     public $routes;
 
+    /**
+     * Router constructor.
+     */
     public function __construct()
     {
         $routerPath = __DIR__ .'/../config/routes.php';
         $this->routes = require $routerPath;
     }
 
+    /**
+     * @return string
+     */
     private function getUrl()
     {
         if(!empty($_SERVER['REQUEST_URI']))
@@ -21,6 +30,7 @@ class Router
             return trim($_SERVER['REQUEST_URI'], '/');
         }
     }
+
 
     public function run()
     {

@@ -6,8 +6,15 @@ namespace controllers;
 
 use models\User;
 
+/**
+ * Class CabinetController
+ * @package controllers
+ */
 class CabinetController
 {
+    /**
+     * @return bool
+     */
     public function actionIndex()
     {
         $userId = User::checkLogged();
@@ -17,6 +24,9 @@ class CabinetController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionEdit() {
         $userId = User::checkLogged();
         $user = User::getUserById($userId);

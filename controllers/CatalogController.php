@@ -8,8 +8,15 @@ use components\Pagination;
 use models\Category;
 use models\Product;
 
+/**
+ * Class CatalogController
+ * @package controllers
+ */
 class CatalogController
 {
+    /**
+     * @return bool
+     */
     public function actionIndex()
     {
         $categories = [];
@@ -22,6 +29,11 @@ class CatalogController
         return true;
     }
 
+    /**
+     * @param $categoryId
+     * @param int $page
+     * @return bool
+     */
     public function actionCategory($categoryId, $page = 1)
     {
         $categories = [];
@@ -32,10 +44,8 @@ class CatalogController
 
         $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
 
-        // Общее количетсво товаров (необходимо для постраничной навигации)
         $total = Product::getTotalProductsInCategory($categoryId);
 
-        // Создаем объект Pagination - постраничная навигация
         $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
 

@@ -7,8 +7,16 @@ namespace controllers;
 use models\Category;
 use models\Product;
 
+/**
+ * Class ProductController
+ * @package controllers
+ */
 class ProductController
 {
+    /**
+     * @param $productId
+     * @return bool
+     */
     public function actionView($productId)
     {
         $categories = [];
