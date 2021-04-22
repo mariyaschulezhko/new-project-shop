@@ -1,0 +1,11 @@
+{
+  "name": "project/new",
+  "description": "lesson php",
+
+  "autoload": {
+    "psr-4": {
+      "": ""
+    }
+  }
+
+}
